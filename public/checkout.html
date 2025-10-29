@@ -110,7 +110,7 @@ async function checkout() {
     }
 
     // Replace with your LIVE Stripe publishable key
-    const stripe = Stripe("pk_live_XXXXXXXXXXXXXXXXXXXX"); 
+    const stripe = Stripe("pk_live_51SLPuYIRB5h9kKSgqV6JOB9LWX6CcoSql3aNbFIzpabBCBBU2pzct7QLi7EaBZ3HNhzdgiEtxpG3kqPHD06kDXfQ00S6lRKCOq"); 
     await stripe.redirectToCheckout({ sessionId: session.id });
 
   } catch (error) {

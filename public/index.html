@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taste Liberia – Home</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- AOS Animation -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<style>
+/* ===== Global Styles ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Poppins', sans-serif; background-color: #fffaf5; color: #333; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+img { display: block; width: 100%; height: auto; }
+
+/* ===== Header ===== */
+header { background-color: #2E6F40; color: #fff; padding: 15px 20px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 6px rgba(0,0,0,0.2);}
+.header-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.logo { width: 60px; border-radius: 50%; }
+nav a { margin: 0 15px; font-weight: 600; transition: color 0.3s, transform 0.3s; }
+nav a:hover { color: #ffe4b3; transform: scale(1.05); }
+
+/* ===== Hero ===== */
+.hero { text-align: center; padding: 80px 20px 60px; background: linear-gradient(135deg, #fffaf5, #ffe8d6); }
+.hero h1 { font-size: 3rem; color: #2E6F40; margin-bottom: 15px; }
+.hero p { font-size: 1.3rem; color: #555; max-width: 700px; margin: 0 auto; }
+
+/* ===== Menu Section ===== */
+.menu-section { padding: 60px 20px; text-align: center; }
+.menu-section h2 { font-size: 2.8rem; color: #2E6F40; margin-bottom: 50px; }
+.menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+.menu-item { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 18px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; }
+.menu-item:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+.menu-item img { height: 220px; object-fit: cover; transition: transform 0.3s; }
+.menu-item:hover img { transform: scale(1.05); }
+.menu-info { padding: 20px; }
+.menu-info h3 { font-size: 1.4rem; color: #2E6F40; margin-bottom: 10px; }
+.menu-info p { font-size: 1.2rem; font-weight: 700; color: #ff9933; }
+.order-btn { display: inline-block; margin-top: 15px; padding: 12px 25px; background-color: #2E6F40; color: #fff; border-radius: 50px; font-weight: 600; transition: all 0.3s; cursor: pointer; }
+.order-btn:hover { background-color: #ff9933; transform: scale(1.05); }
+
+/* ===== Floating Cart ===== */
+.cart-wrapper { position: fixed; bottom: 25px; right: 25px; z-index: 1000; }
+.view-cart-btn { background-color: #ff9933; color: #fff; padding: 15px 30px; border-radius: 50px; font-weight: 700; box-shadow: 0 6px 18px rgba(0,0,0,0.3); display: inline-block; position: relative; animation: pulse 2s infinite, bounce 4s infinite; transition: all 0.3s; }
+.view-cart-btn:hover { background-color: #2E6F40; transform: scale(1.05); }
+.cart-count { position: absolute; top: -10px; right: -10px; background: #e60000; color: #fff; width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: bold; box-shadow: 0 0 8px rgba(0,0,0,0.3); }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255,153,51,0.6); } 70% { box-shadow: 0 0 0 20px rgba(255,153,51,0); } 100% { box-shadow: 0 0 0 0 rgba(255,153,51,0); } }
+@keyframes bounce { 0%,20%,50%,80%,100% { transform: translateY(0); } 40% { transform: translateY(-8px); } 60% { transform: translateY(-4px); } }
+
+/* ===== Footer ===== */
+footer { background-color: #2E6F40; color: #fff; text-align: center; padding: 50px 20px; font-size: 0.95rem; }
+footer a { color: #ffe4b3; transition: color 0.3s; }
+footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header data-aos="fade-down">
+  <div class="header-container">
+    <img src="logo.jpeg" alt="Taste Liberia Logo" class="logo">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="checkout.html">Order</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero" data-aos="zoom-in">
+  <h1>Taste the Heart of Liberia 🇱🇷</h1>
+  <p>Authentic home-cooked dishes made with love and tradition.</p>
+</section>
+
+<!-- Menu Section -->
+<section class="menu-section" data-aos="fade-up">
+  <h2>🍛 Our Signature Dishes</h2>
+  <div class="menu-grid">
+
+    <div class="menu-item" data-aos="zoom-in">
+      <img src="pepper-goat.jpeg" alt="Pepper Goat">
+      <div class="menu-info">
+        <h3>Pepper Goat</h3>
+        <p>$30</p>
+        <button class="order-btn" data-name="Pepper Goat" data-price="30" data-image="images/pepper-goat.jpeg">Add to Order</button>
+      </div>
+    </div>
+
+    <div class="menu-item" data-aos="zoom-in" data-aos-delay="100">
+      <img src="jollof.jpeg" alt="Liberian Veg Jollof Rice">
+      <div class="menu-info">
+        <h3>Liberian Veg Jollof Rice</h3>
+        <p>$17</p>
+        <button class="order-btn" data-name="Liberian Veg Jollof Rice" data-price="17" data-image="images/jollof.jpeg">Add to Order</button>
+      </div>
+    </div>
+
+    <div class="menu-item" data-aos="zoom-in" data-aos-delay="200">
+      <img src="Bake Fish.jpeg" alt="Bake Fish Platter">
+      <div class="menu-info">
+        <h3>Bake Fish Platter</h3>
+        <p>$25</p>
+        <button class="order-btn" data-name="Bake Fish Platter" data-price="25" data-image="images/Bake Fish.jpeg">Add to Order</button>
+      </div>
+    </div>
+
+    <div class="menu-item" data-aos="zoom-in" data-aos-delay="300">
+      <img src="GB.jpeg" alt="Nimba GB Soup">
+      <div class="menu-info">
+        <h3>Nimba GB Soup</h3>
+        <p>$30</p>
+        <button class="order-btn" data-name="Nimba GB Soup" data-price="30" data-image="images/GB.jpeg">Add to Order</button>
+      </div>
+    </div>
+
+    <div class="menu-item" data-aos="zoom-in" data-aos-delay="400">
+      <img src="palm.jpeg" alt="Palm Butter with Rice">
+      <div class="menu-info">
+        <h3>Palm Butter with Rice</h3>
+        <p>$25</p>
+        <button class="order-btn" data-name="Palm Butter with Rice" data-price="25" data-image="images/palm.jpeg">Add to Order</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Floating Cart -->
+<div class="cart-wrapper">
+  <a href="checkout.html" class="view-cart-btn">🛒 View Cart <span class="cart-count">0</span></a>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>📍 Wilmington, Delaware | 📞 +1 (302) 257-1662 | ✉️ Nellie@231cuisine.com</p>
+  <p>&copy; 2025 Taste Liberia – All Rights Reserved</p>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 1000, once: true });
+
+const orderButtons = document.querySelectorAll('.order-btn');
+const cartCount = document.querySelector('.cart-count');
+
+// Initialize cart
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+function updateCart() {
+  localStorage.setItem('cart', JSON.stringify(cart));
+  cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+}
+
+// Add items to cart
+orderButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const name = btn.dataset.name;
+    const price = parseFloat(btn.dataset.price);
+    const image = btn.dataset.image;
+
+    const existingItem = cart.find(item => item.name === name);
+    if (existingItem) existingItem.quantity += 1;
+    else cart.push({ name, price, quantity: 1, image });
+
+    updateCart();
+    cartCount.style.transform = 'scale(1.3)';
+    setTimeout(() => cartCount.style.transform = 'scale(1)', 200);
+  });
+});
+</script>
+</body>
+</html>

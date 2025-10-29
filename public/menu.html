@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu – Taste Liberia</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- AOS Animation -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Poppins',sans-serif; background:#fffaf5; color:#333; overflow-x:hidden; }
+a { text-decoration:none; color:inherit; }
+img { display:block; width:100%; height:auto; }
+
+/* Header */
+header { background:#2E6F40; color:#fff; padding:15px 20px; position:sticky; top:0; z-index:1000; box-shadow:0 2px 6px rgba(0,0,0,0.2); }
+.header-container { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; }
+.logo { width:60px; border-radius:50%; }
+nav a { margin:0 15px; font-weight:600; transition:0.3s; }
+nav a:hover { color:#ffe4b3; transform:scale(1.05); }
+
+/* Hero */
+.hero { text-align:center; padding:80px 20px 60px; background:linear-gradient(135deg,#fffaf5,#ffe8d6); }
+.hero h1 { font-size:3rem; color:#2E6F40; margin-bottom:15px; }
+.hero p { font-size:1.3rem; color:#555; max-width:700px; margin:0 auto; }
+
+/* Menu */
+.menu-section { padding:60px 20px; text-align:center; }
+.menu-section h2 { font-size:2.8rem; color:#2E6F40; margin-bottom:50px; }
+.menu-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; max-width:1200px; margin:0 auto; }
+.menu-item { background:#fff; border-radius:20px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.1); transition:0.3s; padding-bottom:15px; }
+.menu-item:hover { transform:translateY(-8px); box-shadow:0 10px 25px rgba(0,0,0,0.2); }
+.menu-item img { height:220px; object-fit:cover; transition:0.3s; }
+.menu-item:hover img { transform:scale(1.05); }
+.menu-info { padding:15px 20px; }
+.menu-info h3 { font-size:1.4rem; color:#2E6F40; margin-bottom:8px; }
+.menu-info p { font-size:1.2rem; font-weight:700; color:#ff9933; }
+input[type="number"] { width:50px; padding:4px; border-radius:4px; border:1px solid #ccc; margin-top:5px; }
+.btn, .order-btn { display:inline-block; margin-top:10px; padding:10px 20px; background:#2E6F40; color:#fff; border-radius:50px; font-weight:600; cursor:pointer; transition:all 0.3s; }
+.btn:hover, .order-btn:hover { background:#ff9933; transform:scale(1.05); }
+
+/* Mini Cart */
+#mini-cart { position:fixed; bottom:25px; right:25px; z-index:2000; background:#ff9933; color:#fff; padding:12px 20px; border-radius:50px; font-weight:bold; cursor:pointer; transition:0.2s; }
+#mini-cart:hover { transform:scale(1.05); }
+#mini-cart-preview { position:absolute; bottom:60px; right:0; background:#fff; color:#333; padding:10px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.2); display:none; min-width:220px; z-index:2001; }
+#mini-cart:hover #mini-cart-preview { display:block; }
+#mini-cart-preview p { margin:5px 0; font-size:14px; }
+
+/* Cart Table */
+table { width:100%; border-collapse:collapse; margin-top:15px; }
+table th, table td { padding:8px; text-align:left; border-bottom:1px solid #ddd; }
+table th { background:#2E6F40; color:#fff; }
+
+/* Flying animation */
+.flying-img { position:fixed; width:150px; height:150px; object-fit:cover; z-index:3000; border-radius:10px; pointer-events:none; transition: transform 0.8s cubic-bezier(0.4,0,0.2,1), opacity 0.8s; }
+
+/* Footer */
+footer { background:#2E6F40; color:#fff; text-align:center; padding:50px 20px; font-size:0.95rem; }
+footer a { color:#ffe4b3; transition:0.3s; }
+footer a:hover { text-decoration:underline; }
+
+/* Responsive */
+@media(max-width:768px){.menu-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.menu-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header data-aos="fade-down">
+  <div class="header-container">
+    <img src="logo.jpeg" alt="Taste Liberia Logo" class="logo">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" data-aos="zoom-in">
+  <h1>Taste the Heart of Liberia 🇱🇷</h1>
+  <p>Authentic home-cooked dishes made with love and tradition.</p>
+</section>
+
+<section class="menu-section" data-aos="fade-up">
+  <h2>🍛 Our Signature Dishes</h2>
+  <div class="menu-grid" id="menu"></div>
+</section>
+
+<div id="mini-cart">
+  🛒 <span id="mini-cart-count">0</span> items | $<span id="mini-cart-total">0</span>
+  <div id="mini-cart-preview"></div>
+</div>
+
+<section class="menu-section" id="order-form">
+  <h2>Your Cart</h2>
+  <table>
+    <thead>
+      <tr><th>Item</th><th>Qty</th><th>Price</th><th>Remove</th></tr>
+    </thead>
+    <tbody id="cart-body"></tbody>
+  </table>
+  <h4>Total: $<span id="cart-total">0</span></h4>
+  <button class="btn" onclick="checkout()">Pay with Card</button>
+</section>
+
+<footer>
+  <p>📍 Wilmington, Delaware | 📞 +1 (302) 257-1662 | ✉️ Nellie@231cuisine.com</p>
+  <p>&copy; 2025 Taste Liberia – All Rights Reserved</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init();
+
+// Menu Data
+const menuItems = [
+  { name:'Pepper Goat', price:30, img:'pepper-goat.jpeg' },
+  { name:'Liberian Veg Jollof Rice', price:17, img:'jollof.jpeg' },
+  { name:'Bake Fish Platter', price:25, img:'Bake Fish.jpeg' },
+  { name:'Nimba GB Soup', price:30, img:'GB.jpeg' },
+  { name:'Palm Butter with Rice', price:25, img:'palm.jpeg' }
+];
+
+let cart = [];
+const menuGrid = document.getElementById('menu');
+
+menuItems.forEach((item, index)=>{
+  const div = document.createElement('div');
+  div.className='menu-item';
+  div.setAttribute('data-aos','zoom-in');
+  div.innerHTML = `
+    <img src="${item.img}" alt="${item.name}">
+    <div class="menu-info">
+      <h3>${item.name}</h3>
+      <p>$${item.price}</p>
+    </div>
+    <input type="number" id="qty-${index}" value="1" min="1">
+    <button class="btn" onclick="addToCart(${index})">Add to Cart</button>
+  `;
+  menuGrid.appendChild(div);
+});
+
+// Cart functions
+function addToCart(index){
+  const qty=parseInt(document.getElementById(`qty-${index}`).value);
+  const item=menuItems[index];
+  const existing=cart.find(i=>i.name===item.name);
+  if(existing) existing.qty+=qty;
+  else cart.push({...item, qty});
+  updateCart();
+  updateMiniCart();
+  animateFly(index);
+}
+
+function updateCart(){
+  const cartBody=document.getElementById('cart-body');
+  cartBody.innerHTML='';
+  let total=0;
+  cart.forEach((item,i)=>{
+    total+=item.price*item.qty;
+    const row=document.createElement('tr');
+    row.innerHTML=`<td>${item.name}</td>
+                   <td><input type="number" min="1" value="${item.qty}" onchange="updateQty(${i},this.value)"></td>
+                   <td>$${item.price*item.qty}</td>
+                   <td><button onclick="removeItem(${i})">❌</button></td>`;
+    cartBody.appendChild(row);
+  });
+  document.getElementById('cart-total').innerText=total;
+}
+
+function updateQty(i,value){ cart[i].qty=parseInt(value); updateCart(); updateMiniCart(); }
+function removeItem(i){ cart.splice(i,1); updateCart(); updateMiniCart(); }
+
+function updateMiniCart(){
+  let totalQty=0,totalPrice=0;
+  cart.forEach(item=>{ totalQty+=item.qty; totalPrice+=item.price*item.qty; });
+  document.getElementById('mini-cart-count').innerText=totalQty;
+  document.getElementById('mini-cart-total').innerText=totalPrice;
+  const preview=document.getElementById('mini-cart-preview');
+  preview.innerHTML='';
+  const lastItems=cart.slice(-3);
+  lastItems.forEach(i=>{ preview.innerHTML+=`<p>${i.name} x${i.qty}</p>`; });
+  if(cart.length>3) preview.innerHTML+='<p>...and more</p>';
+}
+
+// Flying animation
+function animateFly(idx){
+  const imgElem=document.querySelectorAll('.menu-item img')[idx];
+  const clone=imgElem.cloneNode(true);
+  const rect=imgElem.getBoundingClientRect();
+  clone.style.position='fixed';
+  clone.style.left=rect.left+'px';
+  clone.style.top=rect.top+'px';
+  clone.style.width=rect.width+'px';
+  clone.style.height=rect.height+'px';
+  clone.classList.add('flying-img');
+  document.body.appendChild(clone);
+  const cartRect=document.getElementById('mini-cart').getBoundingClientRect();
+  setTimeout(()=>{ clone.style.transform=`translate(${cartRect.left-rect.left}px,${cartRect.top-rect.top}px) scale(0.2)`; clone.style.opacity='0'; },10);
+  setTimeout(()=>{ document.body.removeChild(clone); },900);
+}
+
+// Stripe Checkout
+async function checkout(){
+  if(cart.length===0){ alert("Cart is empty!"); return; }
+  try{
+    const res=await fetch("https://taste-liberia-backend.onrender.com/create-checkout-session",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({cart})
+    });
+    const data=await res.json();
+    window.open(data.url,"_blank");
+  }catch(err){ alert("Payment failed. Please try again."); console.error(err); }
+}
+</script>
+
+</body>
+</html>
